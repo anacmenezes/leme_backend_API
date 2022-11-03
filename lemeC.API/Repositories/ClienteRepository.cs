@@ -28,7 +28,7 @@ namespace lemeC.API.Repositories
             Cliente clientePorId = await BuscarPorId(id);
             if (clientePorId == null)
             {
-                throw new Exception($"Cliente do ID {id} não encontrado!");
+                throw new Exception($"ID {id} não encontrado!");
             }
             _dbContext.User.Remove(clientePorId);
             await _dbContext.SaveChangesAsync();
@@ -40,7 +40,7 @@ namespace lemeC.API.Repositories
             Cliente clientePorId = await BuscarPorId(id);
             if (clientePorId == null)
             {
-                throw new Exception($"Cliente do ID {id} não encontrado!");
+                throw new Exception($"ID {id} não encontrado!");
             }
             
             _dbContext.Entry(clientePorId).State = EntityState.Modified;
