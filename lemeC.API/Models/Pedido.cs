@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -16,5 +17,11 @@ namespace lemeC.API.Models
         [ForeignKey(nameof(IdClietePedido))]
         [InverseProperty(nameof(Cliente.PedidoList))]
         public virtual Cliente? ClientePedido { get; set; }
+
+        [InverseProperty("PedidoReserva")]
+        public virtual ICollection<Reserva>? ReservaList { get; set; }
+
+        [InverseProperty("PedidoPagamento")]
+        public virtual DbSet<Pagamento>? PagamentoPagto { get; set; }
     }
 }

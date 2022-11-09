@@ -20,7 +20,10 @@ builder.Services.AddSwaggerGen(c =>
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "Leme.API", Version = "v1" });
 });
 
+builder.Services.AddScoped<CidadeDestinoIntRepository, CidadeDestinoRepository>();
 builder.Services.AddScoped<ClienteIntRepository, ClienteRepository>();
+builder.Services.AddScoped<PedidoIntRepository, PedidoRepository>();
+
 
 var app = builder.Build();
 

@@ -18,5 +18,13 @@ namespace lemeC.API.Models
         [Required]
         [Column("preco")]
         public string? Preco { get; set; }
+        public int IdRegiaoCidade { get; set; }
+
+        [ForeignKey(nameof(IdRegiaoCidade))]
+        [InverseProperty(nameof(RegiaoDestino.DestinoList))]
+        public virtual RegiaoDestino? RegiaoCidade { get; set; }
+
+        [InverseProperty("CidadeReserva")]
+        public virtual ICollection<Reserva>? ReservaList { get; set; }
     }
 }

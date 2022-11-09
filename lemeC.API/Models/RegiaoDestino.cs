@@ -15,5 +15,8 @@ namespace lemeC.API.Models
         public string? Nome { get; set; }
         [Column("tipo")]
         public TipoRegiao Tipo { get; set; }
+
+        [InverseProperty("RegiaoCidade")]
+        public virtual ICollection<CidadeDestino>? DestinoList { get; set; }
     }
 }

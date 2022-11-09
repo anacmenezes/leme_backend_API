@@ -27,6 +27,43 @@ namespace lemeC.API.Context
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.HasAnnotation("Relational:Collation", "Latin1_General_CI_AS");
+            modelBuilder.Entity<CidadeDestino>(entity =>
+            {
+                entity.Property(e => e.Nome).IsUnicode(false);
+                entity.Property(e => e.Duracao).IsUnicode(false);
+                entity.Property(e => e.Preco).IsUnicode(false);
+
+                entity.HasOne(d => d.RegiaoCidade)
+                .WithMany(p => p.DestinoList)
+                .HasForeignKey(d => d.IdRegiaoCidade)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Regiao_Cidade");
+            });
+
+            modelBuilder.Entity<RegiaoDestino>(entity =>
+            {
+                entity.Property(e => e.Nome).IsUnicode(false);
+                entity.Property(e => e.Nome).IsUnicode(false);
+                entity.Property(e => e.Tipo).IsUnicode(false);
+            });
+
+            modelBuilder.Entity<Reserva>(entity =>
+            {
+                entity.Property(e => e.Origem).IsUnicode(false);
+
+                entity.HasOne(d => d.CidadeReserva)
+                .WithMany(p => p.ReservaList)
+                .HasForeignKey(d => d.IdCidadeReserva)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Cidade_Reserva");
+
+                entity.HasOne(d => d.PedidoReserva)
+                .WithMany(p => p.ReservaList)
+                .HasForeignKey(d => d.IdPedidoReserva)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Pedido_Reserva");
+            });
+
             modelBuilder.Entity<Cliente>(entity =>
             {
                 entity.Property(e => e.Nome).IsUnicode(false);
@@ -62,6 +99,17 @@ namespace lemeC.API.Context
                 .HasForeignKey(d => d.IdClieteEndereco)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_Cliente_Endereco");
+            });
+
+            modelBuilder.Entity<Pagamento>(entity =>
+            {
+                entity.Property(e => e.Estado).IsUnicode(false);
+
+                entity.HasOne(d => d.PedidoPagamento)
+                .WithMany(p => p.PagamentoPagto)
+                .HasForeignKey(d => d.IdPedidoPagamento)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Pedido_Pagamento");
             });
         }
     }
