@@ -21,9 +21,6 @@ builder.Services.AddSwaggerGen(c =>
 });
 
 builder.Services.AddScoped<CidadeDestinoIntRepository, CidadeDestinoRepository>();
-builder.Services.AddScoped<ClienteIntRepository, ClienteRepository>();
-builder.Services.AddScoped<PedidoIntRepository, PedidoRepository>();
-
 
 var app = builder.Build();
 

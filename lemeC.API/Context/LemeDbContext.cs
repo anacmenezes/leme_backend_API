@@ -20,11 +20,9 @@ namespace lemeC.API.Context
         }
 
         public virtual DbSet<CidadeDestino> Dest { get; set; }
-        public virtual DbSet<RegiaoDestino> RegD { get; set; }
         public virtual DbSet<Cliente> User { get; set; }
         public virtual DbSet<Pedido> Itens { get; set; }
-        public virtual DbSet<Endereco> Localizacao { get; set; }
-        public object Cliente { get; internal set; }
+        public object CidadeDestino { get; internal set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
