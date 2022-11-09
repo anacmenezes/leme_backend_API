@@ -10,10 +10,11 @@ namespace lemeC.API.Models
         public int Id { get; set; }
         [Column("data")]
         public DateTime Instante { get; set; }
+        [Column("idCliente")]
         public int IdClietePedido { get; set; }
 
         [ForeignKey(nameof(IdClietePedido))]
         [InverseProperty(nameof(Cliente.PedidoList))]
-        public virtual Cliente ClientePedido { get; set; }
+        public virtual Cliente? ClientePedido { get; set; }
     }
 }

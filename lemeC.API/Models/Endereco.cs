@@ -11,14 +11,14 @@ namespace lemeC.API.Models
         [Required]
         [Column("logradouro")]
         [StringLength(255)]
-        public string Logradouro { get; set; }
+        public string? Logradouro { get; set; }
         [Required]
         [Column("numero")]
         [StringLength(6)]
-        public string Numero { get; set; }
+        public string? Numero { get; set; }
         [Column("complemento")]
         [StringLength(255)]
-        public string Complemento { get; set; }
+        public string? Complemento { get; set; }
         [Required]
         [Column("bairro")]
         [StringLength(255)]
@@ -26,19 +26,19 @@ namespace lemeC.API.Models
         [Required]
         [Column("estado")]
         [StringLength(200)]
-        public string Estado { get; set; }
+        public string? Estado { get; set; }
         [Required]
         [Column("cidade")]
         [StringLength(200)]
-        public string Cidade { get; set; }
+        public string? Cidade { get; set; }
         [Required]
         [Column("cep")]
         [StringLength(8)]
-        public string Cep { get; set; }
+        public string? Cep { get; set; }
         public int IdClieteEndereco { get; set; }
 
         [ForeignKey(nameof(IdClieteEndereco))]
         [InverseProperty(nameof(Cliente.EnderecoList))]
-        public virtual Cliente ClienteEndereco { get; set; }
+        public virtual Cliente? ClienteEndereco { get; set; }
     }
 }

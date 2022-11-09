@@ -6,11 +6,15 @@ namespace lemeC.API.Context
 {
     public class LemeDbContext : DbContext
     {
+#pragma warning disable CS8618
         public LemeDbContext()
+#pragma warning restore CS8618
         {
         }
 
+#pragma warning disable CS8618
         public LemeDbContext(DbContextOptions<LemeDbContext> options)
+#pragma warning restore CS8618
         : base(options)
         {
         }
